@@ -143,11 +143,10 @@ public class ReceptionistHomeFrm extends javax.swing.JFrame {
     private void btnMakePaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMakePaymentActionPerformed
         // TODO add your handling code here:
         if ((evt.getSource() instanceof JButton) && (((JButton)evt.getSource()).equals(btnMakePayment))) {
-//            (new SearchPatientFrm(user)).setVisible(true);
-//            this.dispose();
-        } else {
             JOptionPane.showMessageDialog(this, "This function is under construction!",
                     "Cảnh báo", JOptionPane.WARNING_MESSAGE);
+//            (new SearchPatientFrm(user)).setVisible(true);
+//            this.dispose();
         }
     }//GEN-LAST:event_btnMakePaymentActionPerformed
 
@@ -156,9 +155,6 @@ public class ReceptionistHomeFrm extends javax.swing.JFrame {
         if ((evt.getSource() instanceof JButton) && (((JButton)evt.getSource()).equals(btnReceptPatient))) {
             (new PatientReceptionFrm(user)).setVisible(true);
             this.dispose();
-        } else {
-            JOptionPane.showMessageDialog(this, "This function is under construction!",
-                    "Cảnh báo", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnReceptPatientActionPerformed
 
@@ -167,9 +163,6 @@ public class ReceptionistHomeFrm extends javax.swing.JFrame {
         if ((evt.getSource() instanceof JButton) && (((JButton)evt.getSource()).equals(btnLogout))) {
             (new LoginFrm()).setVisible(true);
             this.dispose();
-        } else {
-            JOptionPane.showMessageDialog(this, "This function is under construction!",
-                    "Cảnh báo", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnLogoutActionPerformed
 

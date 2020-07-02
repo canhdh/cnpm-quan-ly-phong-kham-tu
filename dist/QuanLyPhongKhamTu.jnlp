@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="QuanLyPhongKhamTu.jar" size="58313" download="eager" />
+    <jar href="QuanLyPhongKhamTu.jar" size="57440" download="eager" />
     <jar href="lib\mysql-connector-java-5.1.49.jar" size="1006904" download="eager" />
   </resources>
   <application-desc main-class="quanlyphongkhamtu.receptionpatient.view.user.LoginFrm"  name="QuanLyPhongKhamTu" >

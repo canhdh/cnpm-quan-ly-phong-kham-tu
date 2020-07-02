@@ -13,7 +13,6 @@ import javax.swing.table.DefaultTableModel;
 import quanlyphongkhamtu.receptionpatient.dao.RegisteredRoomDAO;
 import quanlyphongkhamtu.receptionpatient.dao.RoomDAO;
 import quanlyphongkhamtu.receptionpatient.model.Patient;
-import quanlyphongkhamtu.receptionpatient.model.RegisteredRoom;
 import quanlyphongkhamtu.receptionpatient.model.Room;
 import quanlyphongkhamtu.receptionpatient.model.User;
 import quanlyphongkhamtu.receptionpatient.view.user.ReceptionistHomeFrm;
@@ -55,6 +54,7 @@ public class SearchActiveRoomFrm extends javax.swing.JFrame {
         btnSearch = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblListRoom = new javax.swing.JTable();
+        btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tìm buông khám");
@@ -125,28 +125,38 @@ public class SearchActiveRoomFrm extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblListRoom);
 
+        btnBack.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        btnBack.setText("Quay lại");
+        btnBack.setPreferredSize(new java.awt.Dimension(73, 36));
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnSearchActiveRoomLayout = new javax.swing.GroupLayout(pnSearchActiveRoom);
         pnSearchActiveRoom.setLayout(pnSearchActiveRoomLayout);
         pnSearchActiveRoomLayout.setHorizontalGroup(
             pnSearchActiveRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnSearchActiveRoomLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(lblSearchActiveRoom)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(pnSearchActiveRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblUserFullName, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblUsername, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(27, 27, 27))
             .addGroup(pnSearchActiveRoomLayout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addGroup(pnSearchActiveRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1)
                     .addGroup(pnSearchActiveRoomLayout.createSequentialGroup()
                         .addComponent(lblKey)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtKey, javax.swing.GroupLayout.PREFERRED_SIZE, 760, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtKey, javax.swing.GroupLayout.PREFERRED_SIZE, 748, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnSearchActiveRoomLayout.createSequentialGroup()
+                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblSearchActiveRoom)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(pnSearchActiveRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblUserFullName, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblUsername, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(1, 1, 1)))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
         pnSearchActiveRoomLayout.setVerticalGroup(
@@ -158,7 +168,9 @@ public class SearchActiveRoomFrm extends javax.swing.JFrame {
                         .addComponent(lblUserFullName)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblUsername))
-                    .addComponent(lblSearchActiveRoom))
+                    .addGroup(pnSearchActiveRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblSearchActiveRoom)
+                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(24, 24, 24)
                 .addGroup(pnSearchActiveRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtKey, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -254,6 +266,14 @@ public class SearchActiveRoomFrm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tblListRoomMouseClicked
 
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        if ((evt.getSource() instanceof JButton) && (((JButton) evt.getSource()).equals(btnBack))) {
+            (new SearchPatientFrm(user)).setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_btnBackActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -283,6 +303,7 @@ public class SearchActiveRoomFrm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnSearch;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblKey;

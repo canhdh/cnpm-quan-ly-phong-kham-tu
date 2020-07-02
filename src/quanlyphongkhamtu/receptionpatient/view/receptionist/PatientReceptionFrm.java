@@ -144,9 +144,6 @@ public class PatientReceptionFrm extends javax.swing.JFrame {
         if ((evt.getSource() instanceof JButton) && (((JButton)evt.getSource()).equals(btnSearch))) {
             (new SearchPatientFrm(user)).setVisible(true);
             this.dispose();
-        } else {
-            JOptionPane.showMessageDialog(this, "This function is under construction!",
-                    "Cảnh báo", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnSearchActionPerformed
 
@@ -155,9 +152,6 @@ public class PatientReceptionFrm extends javax.swing.JFrame {
         if ((evt.getSource() instanceof JButton) && (((JButton)evt.getSource()).equals(btnAdd))) {
             (new AddPatientFrm(user)).setVisible(true);
             this.dispose();
-        } else {
-            JOptionPane.showMessageDialog(this, "This function is under construction!",
-                    "Cảnh báo", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnAddActionPerformed
 
@@ -166,9 +160,6 @@ public class PatientReceptionFrm extends javax.swing.JFrame {
         if ((evt.getSource() instanceof JButton) && (((JButton)evt.getSource()).equals(btnBack))) {
             (new ReceptionistHomeFrm(user)).setVisible(true);
             this.dispose();
-        } else {
-            JOptionPane.showMessageDialog(this, "This function is under construction!",
-                    "Cảnh báo", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnBackActionPerformed
 
