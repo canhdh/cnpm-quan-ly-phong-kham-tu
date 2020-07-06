@@ -21,15 +21,14 @@ public class RegisteredRoomDAO extends DAO {
     }
     
     public boolean addRegisteredRoom(Patient patient, Room room) {
-        String sql = "INSERT INTO tblRegisteredRoom(datetime, tblPatientId, tblRoomId, tblMedicalRecordId, tblBillId) "
-                + "VALUES(?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO tblregisteredroom(datetime, tblPatient_id, tblRoom_id, tblBill_id) "
+                + "VALUES(?, ?, ?, ?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setTimestamp(1, Timestamp.from(Instant.now()));
             ps.setInt(2, patient.getId());
             ps.setInt(3, room.getId());
             ps.setInt(4, 1);
-            ps.setInt(5, 1);
             
             ps.executeUpdate();
         } catch (Exception e) {

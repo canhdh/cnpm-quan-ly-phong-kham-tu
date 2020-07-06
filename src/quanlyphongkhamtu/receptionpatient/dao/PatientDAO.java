@@ -23,7 +23,7 @@ public class PatientDAO extends DAO{
     public ArrayList<Patient> searchPatient(String key) {
         ArrayList<Patient> result = new ArrayList<>();
         
-        String sql = "SELECT * FROM tblPatient WHERE lower(fullName) LIKE lower(?)";
+        String sql = "SELECT * FROM tblpatient WHERE lower(fullName) LIKE lower(?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, "%" + key + "%");

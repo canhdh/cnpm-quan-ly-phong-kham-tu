@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="QuanLyPhongKhamTu_browser.jnlp">
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="QuanLyPhongKhamTu.jnlp">
   <information>
     <title>QuanLyPhongKhamTu</title>
     <vendor>tminh</vendor>
@@ -8,10 +8,10 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="QuanLyPhongKhamTu.jar" size="57422" download="eager" />
+    <jar href="QuanLyPhongKhamTu.jar" size="57359" download="eager" />
     <jar href="lib\mysql-connector-java-5.1.49.jar" size="1006904" download="eager" />
   </resources>
-  <applet-desc  width="800" height="600" main-class="quanlyphongkhamtu.receptionpatient.view.user.LoginFrm"  name="QuanLyPhongKhamTu" >
-  </applet-desc>
+  <application-desc main-class="quanlyphongkhamtu.receptionpatient.view.user.LoginFrm"  name="QuanLyPhongKhamTu" >
+  </application-desc>
   <update check="always"/>
 </jnlp>

@@ -99,14 +99,14 @@ public class SearchActiveRoomFrm extends javax.swing.JFrame {
 
             },
             new String [] {
-                "STT", "ID", "Tên buồng", "Loại", "Mô tả", "Vị trí", "Trạng thái"
+                "STT", "ID", "Tên buồng", "Loại", "Mô tả", "Vị trí", "Trạng thái", "Giá tiền"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -211,8 +211,8 @@ public class SearchActiveRoomFrm extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Không tìm thấy phòng khám nào đang hoạt động!",
                     "Thông báo", JOptionPane.INFORMATION_MESSAGE);
             } else {
-                String[] columeNames = {"STT", "ID", "Tên buồng", "Loại", "Mô tả", "Vị trí", "Trạng thái"};
-                String[][] values = new String[listRoom.size()][7];
+                String[] columeNames = {"STT", "ID", "Tên buồng", "Loại", "Mô tả", "Vị trí", "Trạng thái", "Giá tiền"};
+                String[][] values = new String[listRoom.size()][8];
                 for (int i = 0; i < listRoom.size(); i++) {
                     values[i][0] = String.valueOf(i + 1);
                     values[i][1] = String.valueOf(listRoom.get(i).getId());
@@ -221,6 +221,7 @@ public class SearchActiveRoomFrm extends javax.swing.JFrame {
                     values[i][4] = listRoom.get(i).getDescription();
                     values[i][5] = listRoom.get(i).getLocation();
                     values[i][6] = String.valueOf(listRoom.get(i).getStatus());
+                    values[i][7] = String.valueOf(listRoom.get(i).getPrice() + "đ");
                 }
                 DefaultTableModel tableModel = new DefaultTableModel(values, columeNames) {
                     @Override

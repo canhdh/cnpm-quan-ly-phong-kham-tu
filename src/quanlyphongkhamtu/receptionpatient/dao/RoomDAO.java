@@ -22,7 +22,7 @@ public class RoomDAO extends DAO {
     
     public List<Room> searchRoom(String key) {
         List<Room> result = new ArrayList<>();
-        String sql = "SELECT * FROM tblRoom WHERE lower(type) LIKE lower(?) AND status = 1";
+        String sql = "SELECT * FROM tblroom WHERE lower(type) LIKE lower(?) AND status = 1";
         
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -37,7 +37,8 @@ public class RoomDAO extends DAO {
                 room.setDescription(rs.getString("description"));
                 room.setLocation(rs.getString("location"));
                 room.setStatus(rs.getInt("status"));
-                room.setClinicId(rs.getInt("tblClinicId"));
+                room.setClinicId(rs.getInt("tblClinic_id"));
+                room.setPrice(rs.getDouble("price"));
                 
                 result.add(room);
             }

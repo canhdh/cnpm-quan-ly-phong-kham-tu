@@ -17,7 +17,7 @@ public class DAO {
     
     public DAO() {
         if (con == null) {
-            String dbUrl = "jdbc:mysql://34.82.224.69:3306/phongkhamtu?autoReconnect=true&useSSL=false&characterEncoding=utf8";
+            String dbUrl = "jdbc:mysql://127.0.0.1:3306/phongkhamtu?autoReconnect=true&useSSL=false&characterEncoding=utf8";
             String dbClass = "com.mysql.jdbc.Driver";
             
             try {
