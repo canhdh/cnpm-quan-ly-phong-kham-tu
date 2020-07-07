@@ -5,21 +5,25 @@
  */
 package quanlyphongkhamtu.receptionpatient.view.receptionist;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import quanlyphongkhamtu.receptionpatient.dao.RegisteredRoomDAO;
+import quanlyphongkhamtu.receptionpatient.dao.PaymentDAO;
 import quanlyphongkhamtu.receptionpatient.dao.RoomDAO;
 import quanlyphongkhamtu.receptionpatient.model.Patient;
+import quanlyphongkhamtu.receptionpatient.model.Payment;
+import quanlyphongkhamtu.receptionpatient.model.RegisteredRoom;
 import quanlyphongkhamtu.receptionpatient.model.Room;
 import quanlyphongkhamtu.receptionpatient.model.User;
+import quanlyphongkhamtu.receptionpatient.utils.Constants;
 import quanlyphongkhamtu.receptionpatient.view.user.ReceptionistHomeFrm;
 
 /**
  *
- * @author tminh
+ * @author Dang Huu Canh
  */
 public class SearchActiveRoomFrm extends javax.swing.JFrame {
 
@@ -69,7 +73,7 @@ public class SearchActiveRoomFrm extends javax.swing.JFrame {
         lblSearchActiveRoom.setText("Tìm buồng khám đang hoạt động");
 
         lblUserFullName.setText("Name");
-        lblUserFullName.setText(user.getFullName());
+        lblUserFullName.setText(user.getName());
 
         lblUsername.setText("Username");
         lblUsername.setText(user.getUsername());
@@ -220,7 +224,7 @@ public class SearchActiveRoomFrm extends javax.swing.JFrame {
                     values[i][3] = listRoom.get(i).getType();
                     values[i][4] = listRoom.get(i).getDescription();
                     values[i][5] = listRoom.get(i).getLocation();
-                    values[i][6] = String.valueOf(listRoom.get(i).getStatus());
+                    values[i][6] = String.valueOf(listRoom.get(i).getIsActive());
                     values[i][7] = String.valueOf(listRoom.get(i).getPrice() + "đ");
                 }
                 DefaultTableModel tableModel = new DefaultTableModel(values, columeNames) {
@@ -246,11 +250,26 @@ public class SearchActiveRoomFrm extends javax.swing.JFrame {
                 && colume < tblListRoom.getColumnCount() && colume >= 0) {
             Room selectedRoom = listRoom.get(row);
             int confirm = JOptionPane.showConfirmDialog(this, "Đăng ký buồng khám " + selectedRoom.getName()
-                    + " cho bệnh nhân " + patient.getFullName() + "?", 
+                    + " cho bệnh nhân " + patient.getName() + "?", 
                     "Xác nhận", JOptionPane.OK_CANCEL_OPTION);
+            
+            RegisteredRoom registeredRoom = new RegisteredRoom();
+            registeredRoom.setRoom(selectedRoom);
+            registeredRoom.setRegisteredTime(Instant.now());
+            registeredRoom.setUser(user);
+            registeredRoom.setPatient(patient);
+            registeredRoom.setTotal(selectedRoom.getPrice());
+            
+            Payment payment = new Payment();
+            payment.setTotal(selectedRoom.getPrice());
+            payment.setExportTime(Instant.now());
+            payment.setType(Constants.PaymentType.REGISTERED_ROOM);
+            payment.setRegisteredRooms(registeredRoom.asArrayList());
+            payment.setPatient(patient);
+            
             if (confirm == 0) {
-                RegisteredRoomDAO registeredRoomDAO = new RegisteredRoomDAO();
-                if (!registeredRoomDAO.addRegisteredRoom(patient, selectedRoom)) {
+                PaymentDAO paymentDAO = new PaymentDAO();
+                if (!paymentDAO.addPayment(payment)) {
                     JOptionPane.showMessageDialog(this,
                             "Đăng ký không thành công! Vui lòng thử lại!",
                             "Thông báo",
@@ -275,33 +294,6 @@ public class SearchActiveRoomFrm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnBackActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SearchActiveRoomFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SearchActiveRoomFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SearchActiveRoomFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SearchActiveRoomFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;

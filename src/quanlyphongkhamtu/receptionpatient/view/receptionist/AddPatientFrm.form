@@ -76,7 +76,7 @@
                                   <Group type="102" attributes="0">
                                       <Component id="lblFullName" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="txtFullName" min="-2" pref="255" max="-2" attributes="0"/>
+                                      <Component id="txtname" min="-2" pref="255" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
@@ -123,7 +123,7 @@
                   </Group>
                   <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txtFullName" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtname" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblFullName" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtCitizenId" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblCitizenId" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -161,7 +161,7 @@
             <Property name="text" type="java.lang.String" value="Name"/>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="lblUserFullName.setText(this.user.getFullName());"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="lblUserFullName.setText(this.user.getName());"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="lblUsername">
@@ -172,7 +172,7 @@
             <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="lblUsername.setText(this.user.getUsername());"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtFullName">
+        <Component class="javax.swing.JTextField" name="txtname">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="sansserif" size="14" style="0"/>

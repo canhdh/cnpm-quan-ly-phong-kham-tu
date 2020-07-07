@@ -7,7 +7,7 @@ package quanlyphongkhamtu.receptionpatient.utils;
 
 /**
  *
- * @author tminh
+ * @author Dang Huu Canh
  */
 public class Constants {
     

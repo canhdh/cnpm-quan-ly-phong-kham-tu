@@ -13,7 +13,7 @@ import quanlyphongkhamtu.receptionpatient.model.Patient;
 
 /**
  *
- * @author tminh
+ * @author Dang Huu Canh
  */
 public class PatientDAO extends DAO{
 
@@ -24,7 +24,7 @@ public class PatientDAO extends DAO{
     public ArrayList<Patient> searchPatient(String key) {
         ArrayList<Patient> result = new ArrayList<>();
         
-        String sql = "SELECT * FROM tblpatient WHERE lower(fullName) LIKE lower(?)";
+        String sql = "SELECT * FROM tblpatient WHERE lower(name) LIKE lower(?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, "%" + key + "%");
@@ -33,7 +33,7 @@ public class PatientDAO extends DAO{
             while (rs.next()) {
                 Patient patient = new Patient();
                 patient.setId(rs.getInt("id"));
-                patient.setFullName(rs.getString("fullName"));
+                patient.setName(rs.getString("name"));
                 patient.setAddress(rs.getString("address"));
                 patient.setAge(rs.getInt("age"));
                 patient.setCitizenId(rs.getString("citizenId"));
@@ -48,11 +48,11 @@ public class PatientDAO extends DAO{
     }
     
     public boolean addPatient(Patient patient) {
-        String sql = "INSERT INTO tblPatient(fullName, age, address, citizenId, phone) "
+        String sql = "INSERT INTO tblPatient(name, age, address, citizenId, phone) "
                 + "VALUES(?, ?, ?, ?, ?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, patient.getFullName());
+            ps.setString(1, patient.getName());
             ps.setInt(2, patient.getAge());
             ps.setString(3, patient.getAddress());
             ps.setString(4, patient.getCitizenId());

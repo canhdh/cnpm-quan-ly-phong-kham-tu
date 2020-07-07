@@ -13,7 +13,7 @@ import quanlyphongkhamtu.receptionpatient.model.User;
 
 /**
  *
- * @author tminh
+ * @author Dang Huu Canh
  */
 public class LoginFrm extends javax.swing.JFrame {
 
@@ -158,10 +158,10 @@ public class LoginFrm extends javax.swing.JFrame {
                            "Cảnh báo", JOptionPane.WARNING_MESSAGE);
                }
            } else {
-               JOptionPane.showConfirmDialog(this, 
+               JOptionPane.showMessageDialog(this, 
                        "Incorrect username or password", 
                        "Thông báo",
-                       JOptionPane.INFORMATION_MESSAGE);
+                       JOptionPane.ERROR_MESSAGE);
            }
        }
     }//GEN-LAST:event_btnLoginActionPerformed

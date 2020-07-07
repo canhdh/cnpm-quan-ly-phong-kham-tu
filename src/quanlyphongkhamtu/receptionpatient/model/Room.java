@@ -9,33 +9,33 @@ import java.io.Serializable;
 
 /**
  *
- * @author tminh
+ * @author Dang Huu Canh
  */
-public class Room implements Serializable{
+public class Room implements Serializable {
     
     private int id;
     private String name;
     private String type;
-    private double price;
-    private String description;
     private String location;
-    private int status;
-    private int clinicId;
+    private String description;    
+    private double price;
+    private int isActive;
 
     public Room() {
         super();
     }
 
-    public Room(String name, String type, double price, String description, String location, int status, int clinicId) {
+    public Room(String name, String type, String location, String description, double price, int isActive) {
         super();
         this.name = name;
         this.type = type;
-        this.price = price;
-        this.description = description;
         this.location = location;
-        this.status = status;
-        this.clinicId = clinicId;
+        this.description = description;
+        this.price = price;
+        this.isActive = isActive;
     }
+
+    
 
     public int getId() {
         return id;
@@ -85,21 +85,12 @@ public class Room implements Serializable{
         this.location = location;
     }
 
-    public int getStatus() {
-        return status;
+    public int getIsActive() {
+        return isActive;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public void setIsActive(int isActive) {
+        this.isActive = isActive;
     }
-
-    public int getClinicId() {
-        return clinicId;
-    }
-
-    public void setClinicId(int clinicId) {
-        this.clinicId = clinicId;
-    }
-    
     
 }

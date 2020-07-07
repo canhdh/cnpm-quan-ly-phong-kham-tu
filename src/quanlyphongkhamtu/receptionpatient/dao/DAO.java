@@ -10,14 +10,14 @@ import java.sql.DriverManager;
 
 /**
  *
- * @author tminh
+ * @author Dang Huu Canh
  */
 public class DAO {
     public static Connection con;
     
     public DAO() {
         if (con == null) {
-            String dbUrl = "jdbc:mysql://127.0.0.1:3306/phongkhamtu?autoReconnect=true&useSSL=false&characterEncoding=utf8";
+            String dbUrl = "jdbc:mysql://127.0.0.1:3306/test?autoReconnect=true&useSSL=false&characterEncoding=utf8";
             String dbClass = "com.mysql.jdbc.Driver";
             
             try {

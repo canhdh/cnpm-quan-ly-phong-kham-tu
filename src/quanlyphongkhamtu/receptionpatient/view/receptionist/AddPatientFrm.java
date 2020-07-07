@@ -14,7 +14,7 @@ import quanlyphongkhamtu.receptionpatient.view.user.ReceptionistHomeFrm;
 
 /**
  *
- * @author tminh
+ * @author Dang Huu Canh
  */
 public class AddPatientFrm extends javax.swing.JFrame {
 
@@ -41,7 +41,7 @@ public class AddPatientFrm extends javax.swing.JFrame {
         lblAddPatient = new javax.swing.JLabel();
         lblUserFullName = new javax.swing.JLabel();
         lblUsername = new javax.swing.JLabel();
-        txtFullName = new javax.swing.JTextField();
+        txtname = new javax.swing.JTextField();
         lblFullName = new javax.swing.JLabel();
         txtAge = new javax.swing.JTextField();
         lblAge = new javax.swing.JLabel();
@@ -64,13 +64,13 @@ public class AddPatientFrm extends javax.swing.JFrame {
         lblAddPatient.setText("Đăng ký thông tin cho bệnh nhân mới");
 
         lblUserFullName.setText("Name");
-        lblUserFullName.setText(this.user.getFullName());
+        lblUserFullName.setText(this.user.getName());
 
         lblUsername.setText("Username");
         lblUsername.setText(this.user.getUsername());
 
-        txtFullName.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
-        txtFullName.setPreferredSize(new java.awt.Dimension(240, 36));
+        txtname.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        txtname.setPreferredSize(new java.awt.Dimension(240, 36));
 
         lblFullName.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         lblFullName.setText("Tên bệnh nhân:");
@@ -139,7 +139,7 @@ public class AddPatientFrm extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(lblFullName)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(txtFullName, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(txtname, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGap(72, 72, 72)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(lblPhone)
@@ -172,7 +172,7 @@ public class AddPatientFrm extends javax.swing.JFrame {
                         .addComponent(lblUsername)))
                 .addGap(61, 61, 61)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtFullName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblFullName)
                     .addComponent(txtCitizenId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCitizenId))
@@ -224,23 +224,26 @@ public class AddPatientFrm extends javax.swing.JFrame {
             Patient patient = new Patient();
             boolean validate = true;
             String message = "";
-            if (txtFullName.getText() == null || txtFullName.getText().length() == 0) {
+            if (txtname.getText() == null || txtname.getText().length() == 0) {
                 message = message + "\nThiếu thông tin tên bệnh nhân!";
                 validate = false;
             } else {
-                patient.setFullName(txtFullName.getText());
+                patient.setName(txtname.getText());
+                validate = true;
             }
             if (txtAge.getText() == null || txtAge.getText().length() == 0) {
                 message = message + "\nThiếu thông tin tuổi!";
                 validate = false;
             } else {
                 patient.setAge(Integer.parseInt(txtAge.getText()));
+                validate = true;
             }
             if (txtAddress.getText() == null || txtAddress.getText().length() == 0) {
                 message = message + "\nThiếu thông tin địa chỉ!";
                 validate = false;
             } else {
                 patient.setAddress(txtAddress.getText());
+                validate = true;
             }
             if (txtCitizenId.getText() != null && txtCitizenId.getText().length() == 0) {
                 patient.setCitizenId(txtCitizenId.getText());
@@ -250,6 +253,7 @@ public class AddPatientFrm extends javax.swing.JFrame {
                 validate = false;
             } else {
                 patient.setPhone(txtPhone.getText());
+                validate = true;
             }
             PatientDAO patientDAO = new PatientDAO();
             if (validate && patientDAO.addPatient(patient)) {
@@ -265,34 +269,6 @@ public class AddPatientFrm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnAddActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddPatientFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddPatientFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddPatientFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddPatientFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
@@ -309,7 +285,7 @@ public class AddPatientFrm extends javax.swing.JFrame {
     private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtCitizenId;
-    private javax.swing.JTextField txtFullName;
     private javax.swing.JTextField txtPhone;
+    private javax.swing.JTextField txtname;
     // End of variables declaration//GEN-END:variables
 }

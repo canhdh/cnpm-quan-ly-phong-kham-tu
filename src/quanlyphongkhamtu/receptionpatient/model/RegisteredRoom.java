@@ -7,28 +7,30 @@ package quanlyphongkhamtu.receptionpatient.model;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.ArrayList;
 /**
  *
- * @author tminh
+ * @author Dang Huu Canh
  */
 public class RegisteredRoom implements Serializable {
     
     private int id;
-    private Instant datetime;
-    private int tblRoomId;
-    private int tblPatientId;
-    private int tblBillId;
+    private double total;
+    private Instant registeredTime;
+    private Patient patient;
+    private Room room;
+    private User user;
 
     public RegisteredRoom() {
         super();
     }
 
-    public RegisteredRoom(Instant datetime, int tblRoomId, int tblPatientId, int tblBillId) {
-        super();
-        this.datetime = datetime;
-        this.tblRoomId = tblRoomId;
-        this.tblPatientId = tblPatientId;
-        this.tblBillId = tblBillId;
+    public RegisteredRoom(double total, Instant registeredTime, Patient patient, Room room, User user) {
+        this.total = total;
+        this.registeredTime = registeredTime;
+        this.patient = patient;
+        this.room = room;
+        this.user = user;
     }
 
     public int getId() {
@@ -39,37 +41,49 @@ public class RegisteredRoom implements Serializable {
         this.id = id;
     }
 
-    public Instant getDatetime() {
-        return datetime;
+    public double getTotal() {
+        return total;
     }
 
-    public void setDatetime(Instant datetime) {
-        this.datetime = datetime;
+    public void setTotal(double total) {
+        this.total = total;
     }
 
-    public int getTblRoomId() {
-        return tblRoomId;
+    public Instant getRegisteredTime() {
+        return registeredTime;
     }
 
-    public void setTblRoomId(int tblRoomId) {
-        this.tblRoomId = tblRoomId;
+    public void setRegisteredTime(Instant registeredTime) {
+        this.registeredTime = registeredTime;
     }
 
-    public int getTblPatientId() {
-        return tblPatientId;
+    public Patient getPatient() {
+        return patient;
     }
 
-    public void setTblPatientId(int tblPatientId) {
-        this.tblPatientId = tblPatientId;
+    public void setPatient(Patient patient) {
+        this.patient = patient;
     }
 
-    public int getTblBillId() {
-        return tblBillId;
-}
+    public Room getRoom() {
+        return room;
+    }
 
-    public void setTblBillId(int tblBillId) {
-        this.tblBillId = tblBillId;
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
     
-    
+    public ArrayList<RegisteredRoom> asArrayList() {
+      ArrayList<RegisteredRoom> registeredRooms = new ArrayList<>();
+      registeredRooms.add(this);
+      return registeredRooms;
+    };
 }

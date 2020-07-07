@@ -9,42 +9,38 @@ import java.io.Serializable;
 
 /**
  *
- * @author tminh
+ * @author Dang Huu Canh
  */
 public class User implements Serializable {
     
     private int id;
-    private String fullName;
+    private String username;
+    private String password;
+    private String name;
     private int age;
     private String address;
     private String hometown;
     private String phone;
-    private String taxCode;
     private String certificate;
     private String posititon;
-    private String username;
-    private String password;
 
     public User() {
         super();
     }
 
-    public User(String name, int age, String address, String hometown, String phone, String taxCode, String certificate, String posititon, String username, String password) {
+    public User(String username, String password, String name, int age, String address, String hometown, String phone, String certificate, String posititon) {
         super();
-        this.fullName = name;
+        this.username = username;
+        this.password = password;
+        this.name = name;
         this.age = age;
         this.address = address;
         this.hometown = hometown;
         this.phone = phone;
-        this.taxCode = taxCode;
         this.certificate = certificate;
         this.posititon = posititon;
-        this.username = username;
-        this.password = password;
     }
-    
-    
-    
+
     public int getId() {
         return id;
     }
@@ -53,12 +49,28 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    public String getFullName() {
-        return fullName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getAge() {
@@ -93,14 +105,6 @@ public class User implements Serializable {
         this.phone = phone;
     }
 
-    public String getTaxCode() {
-        return taxCode;
-    }
-
-    public void setTaxCode(String taxCode) {
-        this.taxCode = taxCode;
-    }
-
     public String getCertificate() {
         return certificate;
     }
@@ -115,22 +119,6 @@ public class User implements Serializable {
 
     public void setPosititon(String posititon) {
         this.posititon = posititon;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
     
     
