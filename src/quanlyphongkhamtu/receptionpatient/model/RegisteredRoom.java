@@ -20,9 +20,11 @@ public class RegisteredRoom implements Serializable {
     private int tblBillId;
 
     public RegisteredRoom() {
+        super();
     }
 
     public RegisteredRoom(Instant datetime, int tblRoomId, int tblPatientId, int tblBillId) {
+        super();
         this.datetime = datetime;
         this.tblRoomId = tblRoomId;
         this.tblPatientId = tblPatientId;
@@ -63,7 +65,7 @@ public class RegisteredRoom implements Serializable {
 
     public int getTblBillId() {
         return tblBillId;
-    }
+}
 
     public void setTblBillId(int tblBillId) {
         this.tblBillId = tblBillId;

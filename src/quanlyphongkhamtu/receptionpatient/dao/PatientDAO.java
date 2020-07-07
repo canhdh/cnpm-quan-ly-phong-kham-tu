@@ -18,6 +18,7 @@ import quanlyphongkhamtu.receptionpatient.model.Patient;
 public class PatientDAO extends DAO{
 
     public PatientDAO() {
+        super();
     }
     
     public ArrayList<Patient> searchPatient(String key) {

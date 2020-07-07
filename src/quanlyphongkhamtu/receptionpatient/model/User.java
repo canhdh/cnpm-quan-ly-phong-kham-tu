@@ -30,6 +30,7 @@ public class User implements Serializable {
     }
 
     public User(String name, int age, String address, String hometown, String phone, String taxCode, String certificate, String posititon, String username, String password) {
+        super();
         this.fullName = name;
         this.age = age;
         this.address = address;

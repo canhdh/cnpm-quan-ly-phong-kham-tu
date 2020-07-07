@@ -21,9 +21,9 @@ public class RegisteredRoomDAO extends DAO {
     }
     
     public boolean addRegisteredRoom(Patient patient, Room room) {
-        String sql = "INSERT INTO tblregisteredroom(datetime, tblPatient_id, tblRoom_id, tblBill_id) "
+        String sql = "INSERT INTO tblregisteredroom(datetime, patientId, roomId, billId) "
                 + "VALUES(?, ?, ?, ?)";
-        try {
+        try {   
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setTimestamp(1, Timestamp.from(Instant.now()));
             ps.setInt(2, patient.getId());
