@@ -3,21 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/F:/Cong_nghe_phan_mem/application/QuanLyPhongKhamTu/src/quanlyphongkhamtu/receptionpatient/model/Room.java</file>
-            <file>file:/F:/Cong_nghe_phan_mem/application/QuanLyPhongKhamTu/src/quanlyphongkhamtu/receptionpatient/dao/UserDAO.java</file>
-            <file>file:/F:/Cong_nghe_phan_mem/application/QuanLyPhongKhamTu/src/quanlyphongkhamtu/receptionpatient/model/Patient.java</file>
-            <file>file:/F:/Cong_nghe_phan_mem/application/QuanLyPhongKhamTu/src/quanlyphongkhamtu/receptionpatient/view/receptionist/AddPatientFrm.java</file>
-            <file>file:/F:/Cong_nghe_phan_mem/application/QuanLyPhongKhamTu/src/quanlyphongkhamtu/receptionpatient/view/receptionist/SearchActiveRoomFrm.java</file>
-            <file>file:/F:/Cong_nghe_phan_mem/application/QuanLyPhongKhamTu/src/quanlyphongkhamtu/receptionpatient/view/receptionist/PatientReceptionFrm.java</file>
-            <file>file:/F:/Cong_nghe_phan_mem/application/QuanLyPhongKhamTu/src/quanlyphongkhamtu/receptionpatient/dao/PatientDAO.java</file>
-            <file>file:/F:/Cong_nghe_phan_mem/application/QuanLyPhongKhamTu/src/quanlyphongkhamtu/receptionpatient/model/User.java</file>
-            <file>file:/F:/Cong_nghe_phan_mem/application/QuanLyPhongKhamTu/src/quanlyphongkhamtu/receptionpatient/view/user/LoginFrm.java</file>
-            <file>file:/F:/Cong_nghe_phan_mem/application/QuanLyPhongKhamTu/src/quanlyphongkhamtu/receptionpatient/dao/RoomDAO.java</file>
-            <file>file:/F:/Cong_nghe_phan_mem/application/QuanLyPhongKhamTu/src/quanlyphongkhamtu/receptionpatient/view/receptionist/SearchPatientFrm.java</file>
-            <file>file:/F:/Cong_nghe_phan_mem/application/QuanLyPhongKhamTu/src/quanlyphongkhamtu/receptionpatient/dao/DAO.java</file>
-            <file>file:/F:/Cong_nghe_phan_mem/application/QuanLyPhongKhamTu/src/quanlyphongkhamtu/receptionpatient/dao/RegisteredRoomDAO.java</file>
-            <file>file:/F:/Cong_nghe_phan_mem/application/QuanLyPhongKhamTu/src/quanlyphongkhamtu/receptionpatient/view/user/ReceptionistHomeFrm.java</file>
-            <file>file:/F:/Cong_nghe_phan_mem/application/QuanLyPhongKhamTu/src/quanlyphongkhamtu/receptionpatient/model/RegisteredRoom.java</file>
+            <file>file:/F:/Cong_nghe_phan_mem/application/test/src/quanlyphongkhamtu/receptionpatient/model/Payment.java</file>
+            <file>file:/F:/Cong_nghe_phan_mem/application/test/src/quanlyphongkhamtu/receptionpatient/view/receptionist/SearchActiveRoomFrm.java</file>
+            <file>file:/F:/Cong_nghe_phan_mem/application/test/src/quanlyphongkhamtu/receptionpatient/view/user/LoginFrm.java</file>
+            <file>file:/F:/Cong_nghe_phan_mem/application/test/src/quanlyphongkhamtu/receptionpatient/dao/PaymentDAO.java</file>
+            <file>file:/F:/Cong_nghe_phan_mem/application/test/src/quanlyphongkhamtu/receptionpatient/model/Room.java</file>
+            <file>file:/F:/Cong_nghe_phan_mem/application/test/src/quanlyphongkhamtu/receptionpatient/dao/RoomDAO.java</file>
         </group>
     </open-files>
 </project-private>

@@ -11,6 +11,7 @@ import java.sql.Statement;
 import java.sql.Timestamp;
 import quanlyphongkhamtu.receptionpatient.model.Payment;
 import quanlyphongkhamtu.receptionpatient.model.RegisteredRoom;
+import quanlyphongkhamtu.receptionpatient.utils.Constants;
 
 /**
  *
@@ -24,8 +25,8 @@ public class PaymentDAO extends DAO {
     
     public boolean addPayment(Payment payment) {
         
-        String addPaymentSqlString = "INSERT INTO tblpayment (total, exportTime, type, patientId) "
-                + "VALUES(?, ?, ?, ?)";
+        String addPaymentSqlString = "INSERT INTO tblpayment (total, exportTime, type, patientId, isPaid) "
+                + "VALUES(?, ?, ?, ?, ?)";
         String addRegisteredRoomSqlString = "INSERT INTO tblregisteredroom(total, registerTime, roomId, patientId, paymentId, userId) "
                 + "VALUES(?, ?, ?, ?, ?, ?)";
         boolean result = true;
@@ -37,6 +38,7 @@ public class PaymentDAO extends DAO {
             ps.setTimestamp(2, Timestamp.from(payment.getExportTime()));
             ps.setString(3, payment.getType());
             ps.setInt(4, payment.getPatient().getId());
+            ps.setInt(5, (payment.isIsPaid() == true) ? Constants.Status.ENABLED : Constants.Status.DISABLED);
             
             ps.executeUpdate();
             

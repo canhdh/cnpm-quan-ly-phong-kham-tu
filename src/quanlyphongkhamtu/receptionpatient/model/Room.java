@@ -19,13 +19,13 @@ public class Room implements Serializable {
     private String location;
     private String description;    
     private double price;
-    private int isActive;
+    private boolean isActive;
 
     public Room() {
         super();
     }
 
-    public Room(String name, String type, String location, String description, double price, int isActive) {
+    public Room(String name, String type, String location, String description, double price, boolean isActive) {
         super();
         this.name = name;
         this.type = type;
@@ -85,11 +85,11 @@ public class Room implements Serializable {
         this.location = location;
     }
 
-    public int getIsActive() {
+    public boolean getIsActive() {
         return isActive;
     }
 
-    public void setIsActive(int isActive) {
+    public void setIsActive(boolean isActive) {
         this.isActive = isActive;
     }
     
