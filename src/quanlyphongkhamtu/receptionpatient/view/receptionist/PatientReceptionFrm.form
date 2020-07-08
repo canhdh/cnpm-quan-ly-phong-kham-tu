@@ -147,7 +147,7 @@
             <Property name="text" type="java.lang.String" value="Name"/>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="lblUserName.setText(user.getFullName());"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="lblUserName.setText(user.getName());"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="lblUsername">

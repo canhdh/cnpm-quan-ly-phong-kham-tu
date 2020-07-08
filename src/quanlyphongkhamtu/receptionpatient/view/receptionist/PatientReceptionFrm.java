@@ -11,7 +11,7 @@ import quanlyphongkhamtu.receptionpatient.model.User;
 import quanlyphongkhamtu.receptionpatient.view.user.ReceptionistHomeFrm;
 /**
  *
- * @author tminh
+ * @author Dang Huu Canh
  */
 public class PatientReceptionFrm extends javax.swing.JFrame {
 
@@ -78,7 +78,7 @@ public class PatientReceptionFrm extends javax.swing.JFrame {
         });
 
         lblUserName.setText("Name");
-        lblUserName.setText(user.getFullName());
+        lblUserName.setText(user.getName());
 
         lblUsername.setText("Username");
         lblUsername.setText(user.getUsername());
@@ -144,9 +144,6 @@ public class PatientReceptionFrm extends javax.swing.JFrame {
         if ((evt.getSource() instanceof JButton) && (((JButton)evt.getSource()).equals(btnSearch))) {
             (new SearchPatientFrm(user)).setVisible(true);
             this.dispose();
-        } else {
-            JOptionPane.showMessageDialog(this, "This function is under construction!",
-                    "Cảnh báo", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnSearchActionPerformed
 
@@ -155,9 +152,6 @@ public class PatientReceptionFrm extends javax.swing.JFrame {
         if ((evt.getSource() instanceof JButton) && (((JButton)evt.getSource()).equals(btnAdd))) {
             (new AddPatientFrm(user)).setVisible(true);
             this.dispose();
-        } else {
-            JOptionPane.showMessageDialog(this, "This function is under construction!",
-                    "Cảnh báo", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnAddActionPerformed
 
@@ -166,39 +160,9 @@ public class PatientReceptionFrm extends javax.swing.JFrame {
         if ((evt.getSource() instanceof JButton) && (((JButton)evt.getSource()).equals(btnBack))) {
             (new ReceptionistHomeFrm(user)).setVisible(true);
             this.dispose();
-        } else {
-            JOptionPane.showMessageDialog(this, "This function is under construction!",
-                    "Cảnh báo", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnBackActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PatientReceptionFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PatientReceptionFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PatientReceptionFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PatientReceptionFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;

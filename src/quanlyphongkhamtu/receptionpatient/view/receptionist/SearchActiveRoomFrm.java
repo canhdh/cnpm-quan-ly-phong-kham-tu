@@ -5,22 +5,25 @@
  */
 package quanlyphongkhamtu.receptionpatient.view.receptionist;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import quanlyphongkhamtu.receptionpatient.dao.RegisteredRoomDAO;
+import quanlyphongkhamtu.receptionpatient.dao.PaymentDAO;
 import quanlyphongkhamtu.receptionpatient.dao.RoomDAO;
 import quanlyphongkhamtu.receptionpatient.model.Patient;
+import quanlyphongkhamtu.receptionpatient.model.Payment;
 import quanlyphongkhamtu.receptionpatient.model.RegisteredRoom;
 import quanlyphongkhamtu.receptionpatient.model.Room;
 import quanlyphongkhamtu.receptionpatient.model.User;
+import quanlyphongkhamtu.receptionpatient.utils.Constants;
 import quanlyphongkhamtu.receptionpatient.view.user.ReceptionistHomeFrm;
 
 /**
  *
- * @author tminh
+ * @author Dang Huu Canh
  */
 public class SearchActiveRoomFrm extends javax.swing.JFrame {
 
@@ -55,6 +58,7 @@ public class SearchActiveRoomFrm extends javax.swing.JFrame {
         btnSearch = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblListRoom = new javax.swing.JTable();
+        btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tìm buông khám");
@@ -69,7 +73,7 @@ public class SearchActiveRoomFrm extends javax.swing.JFrame {
         lblSearchActiveRoom.setText("Tìm buồng khám đang hoạt động");
 
         lblUserFullName.setText("Name");
-        lblUserFullName.setText(user.getFullName());
+        lblUserFullName.setText(user.getName());
 
         lblUsername.setText("Username");
         lblUsername.setText(user.getUsername());
@@ -99,14 +103,14 @@ public class SearchActiveRoomFrm extends javax.swing.JFrame {
 
             },
             new String [] {
-                "STT", "ID", "Tên buồng", "Loại", "Mô tả", "Vị trí", "Trạng thái"
+                "STT", "ID", "Tên buồng", "Loại", "Mô tả", "Vị trí", "Trạng thái", "Giá tiền"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -125,28 +129,38 @@ public class SearchActiveRoomFrm extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblListRoom);
 
+        btnBack.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        btnBack.setText("Quay lại");
+        btnBack.setPreferredSize(new java.awt.Dimension(73, 36));
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnSearchActiveRoomLayout = new javax.swing.GroupLayout(pnSearchActiveRoom);
         pnSearchActiveRoom.setLayout(pnSearchActiveRoomLayout);
         pnSearchActiveRoomLayout.setHorizontalGroup(
             pnSearchActiveRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnSearchActiveRoomLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(lblSearchActiveRoom)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(pnSearchActiveRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblUserFullName, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblUsername, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(27, 27, 27))
             .addGroup(pnSearchActiveRoomLayout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addGroup(pnSearchActiveRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1)
                     .addGroup(pnSearchActiveRoomLayout.createSequentialGroup()
                         .addComponent(lblKey)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtKey, javax.swing.GroupLayout.PREFERRED_SIZE, 760, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtKey, javax.swing.GroupLayout.PREFERRED_SIZE, 748, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnSearchActiveRoomLayout.createSequentialGroup()
+                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblSearchActiveRoom)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(pnSearchActiveRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblUserFullName, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblUsername, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(1, 1, 1)))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
         pnSearchActiveRoomLayout.setVerticalGroup(
@@ -158,7 +172,9 @@ public class SearchActiveRoomFrm extends javax.swing.JFrame {
                         .addComponent(lblUserFullName)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblUsername))
-                    .addComponent(lblSearchActiveRoom))
+                    .addGroup(pnSearchActiveRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblSearchActiveRoom)
+                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(24, 24, 24)
                 .addGroup(pnSearchActiveRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtKey, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -199,8 +215,8 @@ public class SearchActiveRoomFrm extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Không tìm thấy phòng khám nào đang hoạt động!",
                     "Thông báo", JOptionPane.INFORMATION_MESSAGE);
             } else {
-                String[] columeNames = {"STT", "ID", "Tên buồng", "Loại", "Mô tả", "Vị trí", "Trạng thái"};
-                String[][] values = new String[listRoom.size()][7];
+                String[] columeNames = {"STT", "ID", "Tên buồng", "Loại", "Mô tả", "Vị trí", "Trạng thái", "Giá tiền"};
+                String[][] values = new String[listRoom.size()][8];
                 for (int i = 0; i < listRoom.size(); i++) {
                     values[i][0] = String.valueOf(i + 1);
                     values[i][1] = String.valueOf(listRoom.get(i).getId());
@@ -208,7 +224,8 @@ public class SearchActiveRoomFrm extends javax.swing.JFrame {
                     values[i][3] = listRoom.get(i).getType();
                     values[i][4] = listRoom.get(i).getDescription();
                     values[i][5] = listRoom.get(i).getLocation();
-                    values[i][6] = String.valueOf(listRoom.get(i).getStatus());
+                    values[i][6] = String.valueOf(listRoom.get(i).getIsActive());
+                    values[i][7] = String.valueOf(listRoom.get(i).getPrice() + "đ");
                 }
                 DefaultTableModel tableModel = new DefaultTableModel(values, columeNames) {
                     @Override
@@ -233,11 +250,26 @@ public class SearchActiveRoomFrm extends javax.swing.JFrame {
                 && colume < tblListRoom.getColumnCount() && colume >= 0) {
             Room selectedRoom = listRoom.get(row);
             int confirm = JOptionPane.showConfirmDialog(this, "Đăng ký buồng khám " + selectedRoom.getName()
-                    + " cho bệnh nhân " + patient.getFullName() + "?", 
+                    + " cho bệnh nhân " + patient.getName() + "?", 
                     "Xác nhận", JOptionPane.OK_CANCEL_OPTION);
+            
+            RegisteredRoom registeredRoom = new RegisteredRoom();
+            registeredRoom.setRoom(selectedRoom);
+            registeredRoom.setRegisteredTime(Instant.now());
+            registeredRoom.setUser(user);
+            registeredRoom.setPatient(patient);
+            registeredRoom.setTotal(selectedRoom.getPrice());
+            
+            Payment payment = new Payment();
+            payment.setTotal(selectedRoom.getPrice());
+            payment.setExportTime(Instant.now());
+            payment.setType(Constants.PaymentType.REGISTERED_ROOM);
+            payment.setRegisteredRooms(registeredRoom.asArrayList());
+            payment.setPatient(patient);
+            
             if (confirm == 0) {
-                RegisteredRoomDAO registeredRoomDAO = new RegisteredRoomDAO();
-                if (!registeredRoomDAO.addRegisteredRoom(patient, selectedRoom)) {
+                PaymentDAO paymentDAO = new PaymentDAO();
+                if (!paymentDAO.addPayment(payment)) {
                     JOptionPane.showMessageDialog(this,
                             "Đăng ký không thành công! Vui lòng thử lại!",
                             "Thông báo",
@@ -254,35 +286,17 @@ public class SearchActiveRoomFrm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tblListRoomMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SearchActiveRoomFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SearchActiveRoomFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SearchActiveRoomFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SearchActiveRoomFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        if ((evt.getSource() instanceof JButton) && (((JButton) evt.getSource()).equals(btnBack))) {
+            (new SearchPatientFrm(user)).setVisible(true);
+            this.dispose();
         }
-        //</editor-fold>
-    }
+    }//GEN-LAST:event_btnBackActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnSearch;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblKey;

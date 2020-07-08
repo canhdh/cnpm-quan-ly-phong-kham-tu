@@ -6,31 +6,34 @@
 package quanlyphongkhamtu.receptionpatient.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
- * @author tminh
+ * @author Dang Huu Canh
  */
 public class Patient implements Serializable{
     
     private int id;
-    private String fullName;
-    private int age;
+    private String name;
     private String address;
+    private int age;
     private String citizenId;
     private String phone;
+    private ArrayList<MedicalRecord> medicalRecords;
 
     public Patient() {
         super();
     }
 
-    public Patient(String fullName, int age, String address, String citizenId, String phone) {
+    public Patient(String name, String address, int age, String citizenId, String phone, ArrayList<MedicalRecord> medicalRecords) {
         super();
-        this.fullName = fullName;
-        this.age = age;
+        this.name = name;
         this.address = address;
+        this.age = age;
         this.citizenId = citizenId;
         this.phone = phone;
+        this.medicalRecords = medicalRecords;
     }
 
     public int getId() {
@@ -41,12 +44,12 @@ public class Patient implements Serializable{
         this.id = id;
     }
 
-    public String getFullName() {
-        return fullName;
+    public String getName() {
+        return name;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getAge() {
@@ -79,6 +82,14 @@ public class Patient implements Serializable{
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public ArrayList<MedicalRecord> getMedicalRecords() {
+        return medicalRecords;
+    }
+
+    public void setMedicalRecords(ArrayList<MedicalRecord> medicalRecords) {
+        this.medicalRecords = medicalRecords;
     }
     
     

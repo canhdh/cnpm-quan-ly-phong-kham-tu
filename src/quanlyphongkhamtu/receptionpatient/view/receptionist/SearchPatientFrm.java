@@ -16,7 +16,7 @@ import quanlyphongkhamtu.receptionpatient.model.User;
 
 /**
  *
- * @author tminh
+ * @author Dang Huu Canh
  */
 public class SearchPatientFrm extends javax.swing.JFrame {
 
@@ -49,12 +49,12 @@ public class SearchPatientFrm extends javax.swing.JFrame {
         btnSearch = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblListPatient = new javax.swing.JTable();
+        btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tìm kiếm bệnh nhân");
         setLocation(new java.awt.Point(100, 60));
         setLocationByPlatform(true);
-        setPreferredSize(new java.awt.Dimension(1040, 640));
         setResizable(false);
 
         pnSearchPatient.setPreferredSize(new java.awt.Dimension(1040, 640));
@@ -63,7 +63,7 @@ public class SearchPatientFrm extends javax.swing.JFrame {
         lblSearchPatient.setText("Tìm kiếm bệnh nhân");
 
         lblUserFullName.setText("Name");
-        lblUserFullName.setText(user.getFullName());
+        lblUserFullName.setText(user.getName());
 
         lblUsername.setText("Username");
         lblUsername.setText(user.getUsername());
@@ -126,42 +126,54 @@ public class SearchPatientFrm extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblListPatient);
 
+        btnBack.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        btnBack.setText("Quay lại");
+        btnBack.setPreferredSize(new java.awt.Dimension(100, 36));
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnSearchPatientLayout = new javax.swing.GroupLayout(pnSearchPatient);
         pnSearchPatient.setLayout(pnSearchPatientLayout);
         pnSearchPatientLayout.setHorizontalGroup(
             pnSearchPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnSearchPatientLayout.createSequentialGroup()
-                .addGroup(pnSearchPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(40, 40, 40)
+                .addGroup(pnSearchPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
                     .addGroup(pnSearchPatientLayout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(lblSearchPatient)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(pnSearchPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblKey))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnSearchPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblUserFullName, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblUsername, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnSearchPatientLayout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addGroup(pnSearchPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1)
                             .addGroup(pnSearchPatientLayout.createSequentialGroup()
-                                .addComponent(lblKey)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtKey, javax.swing.GroupLayout.PREFERRED_SIZE, 761, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(pnSearchPatientLayout.createSequentialGroup()
+                                .addComponent(lblSearchPatient)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(pnSearchPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblUsername, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblUserFullName, javax.swing.GroupLayout.Alignment.TRAILING))))))
                 .addGap(23, 23, 23))
         );
         pnSearchPatientLayout.setVerticalGroup(
             pnSearchPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnSearchPatientLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addGroup(pnSearchPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnSearchPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnSearchPatientLayout.createSequentialGroup()
                         .addComponent(lblUserFullName)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblUsername))
-                    .addComponent(lblSearchPatient))
+                    .addGroup(pnSearchPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblSearchPatient)))
                 .addGap(26, 26, 26)
                 .addGroup(pnSearchPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtKey, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -212,7 +224,7 @@ public class SearchPatientFrm extends javax.swing.JFrame {
                 for (int i = 0; i < listPatient.size(); i++) {
                     values[i][0] = String.valueOf(i + 1);
                     values[i][1] = String.valueOf(listPatient.get(i).getId());
-                    values[i][2] = listPatient.get(i).getFullName();
+                    values[i][2] = listPatient.get(i).getName();
                     values[i][3] = String.valueOf(listPatient.get(i).getAge());
                     values[i][4] = listPatient.get(i).getAddress();
                     values[i][5] = listPatient.get(i).getCitizenId();
@@ -249,36 +261,17 @@ public class SearchPatientFrm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tblListPatientMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SearchPatientFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SearchPatientFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SearchPatientFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SearchPatientFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        if ((evt.getSource() instanceof JButton) && (((JButton) evt.getSource()).equals(btnBack))) {
+            (new PatientReceptionFrm(user)).setVisible(true);
+            this.dispose();
         }
-        //</editor-fold>
-        //</editor-fold>
-    }
+    }//GEN-LAST:event_btnBackActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnSearch;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblKey;

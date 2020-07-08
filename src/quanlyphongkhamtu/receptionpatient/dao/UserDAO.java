@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 import quanlyphongkhamtu.receptionpatient.model.User;
 /**
  *
- * @author tminh
+ * @author Dang Huu Canh
  */
 public class UserDAO extends DAO {
 
@@ -21,19 +21,19 @@ public class UserDAO extends DAO {
     
     public boolean checkLogin(User user) {
         boolean result = false;
-        String sql = "SELECT name, address, age, hometown, phone, taxCode, certificate, position FROM tblUser WHERE username = ? AND password = ?";
+        String sql = "SELECT id, name, address, age, hometown, phone, certificate, position FROM tbluser WHERE username = ? AND password = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, user.getUsername());
             ps.setString(2, user.getPassword());
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                user.setFullName(rs.getString("name"));
+                user.setId(rs.getInt("id"));
+                user.setName(rs.getString("name"));
                 user.setAddress(rs.getString("address"));
                 user.setAge(rs.getInt("age"));
                 user.setHometown(rs.getString("hometown"));
                 user.setPhone(rs.getString("phone"));
-                user.setTaxCode(rs.getString("taxCode"));
                 user.setCertificate(rs.getString("certificate"));
                 user.setPosititon(rs.getString("position"));
                 result = true;

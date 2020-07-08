@@ -10,23 +10,26 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import quanlyphongkhamtu.receptionpatient.model.Room;
+import quanlyphongkhamtu.receptionpatient.utils.Constants;
 
 /**
  *
- * @author tminh
+ * @author Dang Huu Canh
  */
 public class RoomDAO extends DAO {
 
     public RoomDAO() {
+        super();
     }
     
     public List<Room> searchRoom(String key) {
         List<Room> result = new ArrayList<>();
-        String sql = "SELECT * FROM tblRoom WHERE lower(type) LIKE lower(?) AND status = 1";
+        String sql = "SELECT * FROM tblroom WHERE lower(type) LIKE lower(?) AND isActive = ?";
         
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, "%" + key + "%");
+            ps.setInt(2, Constants.Status.ENABLED);
             ResultSet rs = ps.executeQuery();
             
             while (rs.next()) {
@@ -36,8 +39,8 @@ public class RoomDAO extends DAO {
                 room.setType(rs.getString("type"));
                 room.setDescription(rs.getString("description"));
                 room.setLocation(rs.getString("location"));
-                room.setStatus(rs.getInt("status"));
-                room.setClinicId(rs.getInt("tblClinicId"));
+                room.setIsActive(rs.getInt("isActive"));
+                room.setPrice(rs.getDouble("price"));
                 
                 result.add(room);
             }
