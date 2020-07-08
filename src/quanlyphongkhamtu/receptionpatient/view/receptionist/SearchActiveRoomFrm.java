@@ -215,7 +215,7 @@ public class SearchActiveRoomFrm extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Không tìm thấy phòng khám nào đang hoạt động!",
                     "Thông báo", JOptionPane.INFORMATION_MESSAGE);
             } else {
-                String[] columeNames = {"STT", "ID", "Tên buồng", "Loại", "Mô tả", "Vị trí", "Trạng thái", "Giá tiền"};
+                String[] columeNames = {"STT", "ID", "Tên buồng", "Loại", "Mô tả", "Vị trí", "Hoạt động", "Giá tiền"};
                 String[][] values = new String[listRoom.size()][8];
                 for (int i = 0; i < listRoom.size(); i++) {
                     values[i][0] = String.valueOf(i + 1);
@@ -266,6 +266,7 @@ public class SearchActiveRoomFrm extends javax.swing.JFrame {
             payment.setType(Constants.PaymentType.REGISTERED_ROOM);
             payment.setRegisteredRooms(registeredRoom.asArrayList());
             payment.setPatient(patient);
+            payment.setIsPaid(false);
             
             if (confirm == 0) {
                 PaymentDAO paymentDAO = new PaymentDAO();

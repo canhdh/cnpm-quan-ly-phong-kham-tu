@@ -19,6 +19,7 @@ public class Payment implements Serializable {
     private double total;
     private Instant exportTime;
     private String type;
+    private boolean isPaid;
     private ArrayList<RegisteredRoom> registeredRooms;
     private ArrayList<RequiredTest> requiredTests;
     private ArrayList<RequiredService> requiredServices;
@@ -29,10 +30,12 @@ public class Payment implements Serializable {
         super();
     }
 
-    public Payment(double total, Instant exportTime, String type, ArrayList<RegisteredRoom> registeredRooms, ArrayList<RequiredTest> requiredTests, ArrayList<RequiredService> requiredServices, ArrayList<Prescription> prescriptions, Patient patient) {
+    public Payment(double total, Instant exportTime, String type, boolean isPaid, ArrayList<RegisteredRoom> registeredRooms, ArrayList<RequiredTest> requiredTests, ArrayList<RequiredService> requiredServices, ArrayList<Prescription> prescriptions, Patient patient) {
+        super();
         this.total = total;
         this.exportTime = exportTime;
         this.type = type;
+        this.isPaid = isPaid;
         this.registeredRooms = registeredRooms;
         this.requiredTests = requiredTests;
         this.requiredServices = requiredServices;
@@ -111,6 +114,13 @@ public class Payment implements Serializable {
     public void setPatient(Patient patient) {
         this.patient = patient;
     }
-    
-    
+
+    public boolean isIsPaid() {
+        return isPaid;
+    }
+
+    public void setIsPaid(boolean isPaid) {
+        this.isPaid = isPaid;
+    }
+   
 }

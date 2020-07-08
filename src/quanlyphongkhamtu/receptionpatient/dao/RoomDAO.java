@@ -39,7 +39,7 @@ public class RoomDAO extends DAO {
                 room.setType(rs.getString("type"));
                 room.setDescription(rs.getString("description"));
                 room.setLocation(rs.getString("location"));
-                room.setIsActive(rs.getInt("isActive"));
+                room.setIsActive((rs.getInt("isActive") == Constants.Status.ENABLED));
                 room.setPrice(rs.getDouble("price"));
                 
                 result.add(room);
